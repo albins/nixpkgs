@@ -14,7 +14,7 @@ propagatedUserEnvPkgs = [ gnome3.gnome_themes_standard
                       gnome3.gnome_icon_theme_symbolic
                       gnome3.gsettings_desktop_schemas];
 
-  buildInputs = [gobjectIntrospection intltool glib gtk3 libtool pkgconfig gnome3.libsoup gnome3.libpeas tdb json_glib gnome3.totem-pl-parser gst_all_1.gstreamer gst_all_1.gst-plugins-base gst_all_1.gst-plugins-good gst_all_1.gst-plugins-ugly libnotify libmtp clutter itstool python3 gnome3.gsettings_desktop_schemas];
+  buildInputs = [gobjectIntrospection intltool glib gtk3 libtool pkgconfig gnome3.libsoup gnome3.libpeas tdb json_glib gnome3.totem-pl-parser gst_all_1.gstreamer gst_all_1.gst-plugins-base gst_all_1.gst-plugins-good gst_all_1.gst-plugins-ugly libnotify libmtp clutter itstool python3 gnome_desktop gsettings_desktop_schemas];
 
 #  configurePhase = ''
 #  ./autogen.sh --prefix=$out
