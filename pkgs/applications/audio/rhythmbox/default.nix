@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, gobjectIntrospection, gnome3, gtk3, glib, intltool, libtool, pkgconfig, tdb, json_glib, gst_all_1, libnotify, libmtp, clutter, itstool, python3,hicolor_icon_theme, shared_mime_info, makeWrapper}:
+{ stdenv, fetchurl, gobjectIntrospection, gnome3, gtk3, glib, intltool, libtool, pkgconfig, tdb, json_glib, gst_all_1, libnotify, libmtp, clutter, itstool, python3, hicolor_icon_theme, shared_mime_info, makeWrapper}:
 
 stdenv.mkDerivation rec {
   name = "rhythmbox-3.1";
@@ -14,18 +14,20 @@ stdenv.mkDerivation rec {
    gst_all_1.gstreamer gst_all_1.gst-plugins-base
    gst_all_1.gst-plugins-good gst_all_1.gst-plugins-ugly
    libnotify libmtp clutter itstool python3 gnome_desktop
-   gsettings_desktop_schemas gnome_themes_standard
+   gsettings_desktop_schemas gnome_themes_standard hicolor_icon_theme
    gnome_icon_theme gnome_icon_theme_symbolic makeWrapper];
 
 #  configurePhase = ''
 #  ./autogen.sh --prefix=$out
 #  '';
 
-# From the Evince package
+# From the Empathy package
 preFixup = ''
-wrapProgram "$out/bin/rhythmbox" \
+for f in $out/bin/* $out/libexec/*; do
+wrapProgram $f \
 --set GDK_PIXBUF_MODULE_FILE "$GDK_PIXBUF_MODULE_FILE" \
---prefix XDG_DATA_DIRS : "$XDG_ICON_DIRS:${gtk3}/share:${shared_mime_info}/share:$out/share:$GSETTINGS_SCHEMAS_PATH"
+--prefix XDG_DATA_DIRS : "$XDG_ICON_DIRS:${gtk3}/share:${gnome3.gnome_themes_standard}/:${gnome3.gnome_themes_standard}/share:${hicolor_icon_theme}/share:$out/share:$GSETTINGS_SCHEMAS_PATH"
+done
 rm $out/share/icons/hicolor/icon-theme.cache
 '';
 
