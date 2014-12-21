@@ -1,3 +1,5 @@
+source $stdenv/setup
+
 for f in $out/bin/* $out/libexec/*; do
 wrapProgram $f \
 --set GDK_PIXBUF_MODULE_FILE "$GDK_PIXBUF_MODULE_FILE" \

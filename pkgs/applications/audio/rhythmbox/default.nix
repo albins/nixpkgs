@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
 #  '';
 
 # From the Empathy package
-preFixup = prefixup.sh;
+preFixup = ./prefixup.sh;
 
   meta = {
     homepage = https://wiki.gnome.org/Apps/Rhythmbox;
