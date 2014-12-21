@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, gobjectIntrospection, gnome3, gtk3, glib, intltool, libtool, pkgconfig, tdb, json_glib, gst_all_1, libnotify, libmtp, clutter, itstool, python3,hicolor_icon_theme, shared_mime_info}:
+{ stdenv, fetchurl, gobjectIntrospection, gnome3, gtk3, glib, intltool, libtool, pkgconfig, tdb, json_glib, gst_all_1, libnotify, libmtp, clutter, itstool, python3,hicolor_icon_theme, shared_mime_info, makeWrapper}:
 
 stdenv.mkDerivation rec {
   name = "rhythmbox-3.1";
@@ -15,13 +15,13 @@ stdenv.mkDerivation rec {
    gst_all_1.gst-plugins-good gst_all_1.gst-plugins-ugly
    libnotify libmtp clutter itstool python3 gnome_desktop
    gsettings_desktop_schemas gnome_themes_standard
-   gnome_icon_theme gnome_icon_theme_symbolic];
+   gnome_icon_theme gnome_icon_theme_symbolic makeWrapper];
 
 #  configurePhase = ''
 #  ./autogen.sh --prefix=$out
 #  '';
 
-# From the Empathy package
+# From the Evince package
 preFixup = ''
 wrapProgram "$out/bin/rhythmbox" \
 --set GDK_PIXBUF_MODULE_FILE "$GDK_PIXBUF_MODULE_FILE" \
