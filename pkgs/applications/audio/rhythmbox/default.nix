@@ -11,7 +11,8 @@ stdenv.mkDerivation rec {
 propagatedUserEnvPkgs = [ gnome3.gnome_themes_standard
                       gnome3.gnome_icon_theme hicolor_icon_theme
                       shared_mime_info
-                      gnome3.gnome_icon_theme_symbolic ];
+                      gnome3.gnome_icon_theme_symbolic
+                      gnome3.gsettings_desktop_schemas];
 
   buildInputs = [gobjectIntrospection intltool glib gtk3 libtool pkgconfig gnome3.libsoup gnome3.libpeas tdb json_glib gnome3.totem-pl-parser gst_all_1.gstreamer gst_all_1.gst-plugins-base gst_all_1.gst-plugins-good gst_all_1.gst-plugins-ugly libnotify libmtp clutter itstool python3 gnome3.gsettings_desktop_schemas];
 
@@ -23,8 +24,8 @@ propagatedUserEnvPkgs = [ gnome3.gnome_themes_standard
 preFixup = ''
 for f in $out/bin/* $out/libexec/*; do
 wrapProgram $f \
---set GDK_PIXBUF_MODULE_FILE "$GDK_PIXBUF_MODULE_FILE" \
---prefix XDG_DATA_DIRS : "$XDG_ICON_DIRS:${gtk3}/share:${gnome3.gnome_themes_standard}/:${gnome3.gnome_themes_standard}/share:${hicolor_icon_theme}/share:$out/share:$GSETTINGS_SCHEMAS_PATH"
+            --set GDK_PIXBUF_MODULE_FILE "$GDK_PIXBUF_MODULE_FILE" \
+            --prefix XDG_DATA_DIRS : "$XDG_ICON_DIRS:${gtk3}/share:${gnome3.gnome_themes_standard}/:${gnome3.gnome_themes_standard}/share:${hicolor_icon_theme}/share:$out/share:$GSETTINGS_SCHEMAS_PATH"
 done
 rm $out/share/icons/hicolor/icon-theme.cache
 '';
