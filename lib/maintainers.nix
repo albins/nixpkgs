@@ -10,6 +10,7 @@
   aherrmann = "Andreas Herrmann <andreash87@gmx.ch>";
   ak = "Alexander Kjeldaas <ak@formalprivacy.com>";
   akc = "Anders Claesson <akc@akc.is>";
+  albins = "Albin Stjerna <albin.stjerna@gmail.com>";
   algorith = "Dries Van Daele <dries_van_daele@telenet.be>";
   all = "Nix Committers <nix-commits@lists.science.uu.nl>";
   amiddelk = "Arie Middelkoop <amiddelk@gmail.com>";
