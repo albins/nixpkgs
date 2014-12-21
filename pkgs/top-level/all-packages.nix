@@ -2280,6 +2280,8 @@ let
 
   rhash = callPackage ../tools/security/rhash { };
 
+  rhythmbox = callPackage ../applications/audio/rhythmbox {};
+
   riemann_c_client = callPackage ../tools/misc/riemann-c-client { };
 
   ripmime = callPackage ../tools/networking/ripmime {};
@@ -2809,7 +2811,7 @@ let
   };
 
   wml = callPackage ../development/web/wml { };
-  
+
   wv = callPackage ../tools/misc/wv { };
 
   wv2 = callPackage ../tools/misc/wv2 { };
